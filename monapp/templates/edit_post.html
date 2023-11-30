@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header></header>
+    <nav>
+        <a href="{% url 'home' %}">Retour à la page d'accueil</a>
+        <a href="{% url 'monapp:profile_view' username=user.username %}">Voir Profil</a>
+        <a href="{% url 'monapp:logout' %}">Se déconnecter</a>
+    </nav>
+    <main>
+        <h2>Édition du Post : {{ post.titre }}</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Mettre à jour</button>
+  </form>
+  <br>
+  <br>
+  <a href="{% url 'monapp:post_detail' post.id %}">Retour au post</a>
+    </main>
+    <footer></footer>
+</body>
+</html>

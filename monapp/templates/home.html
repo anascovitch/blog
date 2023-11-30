@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'accueil</title>
+</head>
+<body>
+    <header>
+       <!-- Lien vers la page d'inscription -->
+       <a href='register'>Inscription</a>
+       <!-- Lien vers la page de connexion au profil -->
+       
+       <a href="{% url 'login' %}">Se connecter</a>
+
+    </header>
+    <main>
+        <section>
+            <h1>Bienvenue sur notre site de photographie</h1>
+        </section>
+        <section>
+            {% for post in posts %}
+            <h2>{{ post.titre }}</h2>
+            <p>{{ post.description }}</p>
+            <img src="{{ post.image.url }}" alt="{{ post.titre }}">
+            {% endfor %}
+        </section>
+        <section>
+            <p>Découvrez notre collection de photographies et laissez-vous inspirer par les œuvres de nos créateurs.</p>
+        </section>
+
+    </main>
+    <footer></footer>
+</body>
+</html>
+

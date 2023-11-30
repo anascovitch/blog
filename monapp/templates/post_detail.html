@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header></header>
+    <nav>
+        <a href="{% url 'home' %}">Retour à la page d'accueil</a>
+        <a href="{% url 'monapp:profile_view' username=user.username %}">Voir Profil</a>
+        <a href="{% url 'monapp:logout' %}">Se déconnecter</a>
+    </nav>
+    <main>
+               
+        <div class="post-detail">
+            <h1>{{ post.titre }}</h1>
+            
+            {% if post.image %}
+            <img src="{{ post.image.url }}" alt="{{ post.titre }}">
+            {% endif %}
+            
+            <p>{{ post.description }}</p>
+            <p>Posté par: {{ post.auteur.username }}</p>
+            <p>Date de création: {{ post.date_creation|date:"d/m/Y H:i" }}</p>
+            
+            <!-- Boutons d'action -->
+            {% if user.is_authenticated and user == post.auteur %}
+            <a href="{% url 'monapp:edit_post' post.id %}">Éditer ce post</a>
+            <!-- Vous pouvez ajouter d'autres actions ici, comme supprimer -->
+            <a href="{% url 'monapp:delete_post' post.id %}">Supprimer ce post</a>
+            {% endif %}
+        </div>
+
+        <!-- Lien pour revenir à la liste des posts ou à la page d'accueil -->
+        <a href="{% url 'monapp:profile_view' username=user.username %}">Retour à mon profil</a>
+       
+
+    </main>
+    <footer></footer>
+</body>
+</html>

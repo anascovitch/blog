@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header></header>
+    <nav>
+        <a href="{% url 'home' %}">Retour à la page d'accueil</a>
+        <a href="{% url 'monapp:profile_view' username=user.username %}">Voir Profil</a>
+        <a href="{% url 'monapp:logout' %}">Se déconnecter</a>
+    </nav>
+    <main>
+        {% for post in posts %}
+        <div>
+            <h2>{{ post.titre }}</h2>
+            <p>{{ post.description }}</p>
+            <img src="{{ post.image.url }}" alt="{{ post.titre }}">
+        </div>
+        {% endfor %}
+         
+    </main>
+    <footer></footer>
+</body>
+</html>

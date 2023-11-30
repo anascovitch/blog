@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUPPRIMER UN POST</title>
+</head>
+<body>
+    <header></header>
+    <nav><a href="{% url 'home' %}">Retour à la page d'accueil</a></nav>
+    <main>
+        <div class="delete-post">
+            <h2>Voulez-vous vraiment supprimer ce post? "{{ post.titre }}" ?</h2>
+        
+            <form method="post">
+              {% csrf_token %}
+              <button type="submit">Oui, supprimer ce post</button>
+            </form>
+        
+            <a href="{% url 'monapp:profile_view' username=user.username %}">Non, annuler</a>
+          </div>
+    </main>
+    <footer></footer>
+</body>
+</html>

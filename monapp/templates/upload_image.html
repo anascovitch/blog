@@ -1,0 +1,23 @@
+
+  
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHARGER UNE IMAGE</title>
+</head>
+<body>
+    <header></header>
+    <nav></nav>
+    <main>
+        <h2>Upload an Image</h2>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Télécharger l'image</button>
+            </form>
+    </main>
+    <footer></footer>
+</body>
+</html>
